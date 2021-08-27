@@ -1,8 +1,4 @@
-export type Engine =
-  | "ada"
-  | "babbage"
-  | "curie"
-  | "davinci";
+import { Engine } from "./engine.ts";
 
 export type QueryData =
   & {
