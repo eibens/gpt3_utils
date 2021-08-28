@@ -20,6 +20,12 @@ GitHub, where `ref` is a Git ref name such as `main` or a version tag:
 import { gpt3 } from "https://raw.githubusercontent.com/eibens/{ref}/gpt3_utils/mod.ts";
 ```
 
+# Note on [cost.ts](cost.ts)
+
+The [mod.ts](mod.ts) module exports all other modules, except for
+[cost.ts](cost.ts). The reason is that the latter depends on the tokenizer,
+which is quite large (~1.5 MB).
+
 <!-- references -->
 
 [gpt3_utils]: #
