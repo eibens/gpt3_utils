@@ -20,11 +20,11 @@ GitHub, where `ref` is a Git ref name such as `main` or a version tag:
 import { gpt3 } from "https://raw.githubusercontent.com/eibens/{ref}/gpt3_utils/mod.ts";
 ```
 
-# Note on [cost.ts](cost.ts)
+# Note on [tokenize.ts](tokenize.ts)
 
 The [mod.ts](mod.ts) module exports all other modules, except for
-[cost.ts](cost.ts). The reason is that the latter depends on the tokenizer,
-which is quite large (~1.5 MB).
+[tokenize.ts](tokenize.ts). The reason is that the dependencies of the latter
+are quite large (~1.5 MB).
 
 <!-- references -->
 

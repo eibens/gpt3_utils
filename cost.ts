@@ -1,5 +1,4 @@
 import { Engine } from "./engine.ts";
-import { encode } from "https://deno.land/x/gpt_2_3_tokenizer@v0.0.1/mod.js";
 
 // Cost per thousand tokens in dollars.
 const costs: Record<Engine, number> = {
@@ -10,50 +9,65 @@ const costs: Record<Engine, number> = {
 };
 
 /**
+ * Defines a function that converts text into tokens.
+ *
+ * The implementation is quite large, so it will be injected.
+ */
+export type Tokenizer = (text: string) => string[];
+
+/**
  * Counts the tokens in a text.
  *
- * @param text is the text that should be tokenized.
+ * @param text is the text that should be measured.
  * @returns the number of tokens in the text.
  */
-export function countTokens(text: string) {
-  return encode(text).length;
+export function countTokens(text: string, options: {
+  tokenize: Tokenizer;
+}) {
+  return options.tokenize(text).length;
 }
 
 /**
  * Calculates the cost of the specified number of tokens.
  *
  * @param tokens is the amount of tokens.
- * @param engine is the GPT3 engine.
  * @returns the estimated cost for the tokens.
  */
-export function costFromCount(tokens: number, engine: Engine) {
-  return costs[engine] * tokens / 1_000;
+export function costFromCount(tokens: number, options: {
+  engine: Engine;
+}) {
+  return costs[options.engine] * tokens / 1_000;
 }
 
 /**
  * Calculates the cost of the tokens in the specified text.
  *
  * @param text is the text that should be tokenized.
- * @param engine is the GPT3 engine.
  * @returns the estimated cost in dollars.
  */
-export function costFromText(text: string, engine: Engine) {
-  return costFromCount(countTokens(text), engine);
+export function costFromText(text: string, options: {
+  engine: Engine;
+  tokenize: Tokenizer;
+}) {
+  return costFromCount(countTokens(text, options), options);
 }
 
 /**
  * Calculates the total cost of the prompt tokens and max_tokens.
  *
- * @param options define the relevant parameters.
  * @returns the estimated cost in dollars.
  */
 export function costFromQuery(options: {
-  prompt: string;
+  prompt: string | string[];
   max_tokens: number;
   engine: Engine;
+  tokenize: Tokenizer;
 }): number {
+  const text = typeof options.prompt === "string"
+    ? options.prompt
+    : options.prompt.join(" ");
   return costFromCount(
-    countTokens(options.prompt) + options.max_tokens,
-    options.engine,
+    countTokens(text, options) + options.max_tokens,
+    options,
   );
 }
