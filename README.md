@@ -11,7 +11,19 @@ coverage][coverage-shield]][coverage]
 # Getting Started
 
 Set an environment variable called `GPT3_API_KEY` with your API key. Then run
-the example with `deno run -A example.ts`. **Warning: Running the example will
+the example:
+
+```sh
+deno run \
+--allow-env=GPT3_API_KEY \
+--allow-net=api.openai.com \
+--allow-read=. \
+--allow-write=. \
+https://raw.githubusercontent.com/eibens/gpt3_utils/main/example.ts \
+rainbow
+```
+
+**Warning: Running the example will
 use some of your API resources.** See [example.ts](example.ts) and
 [gpt3.ts](gpt3.ts) for details on the TypeScript API. Import [gpt3_utils] from
 GitHub, where `ref` is a Git ref name such as `main` or a version tag:
