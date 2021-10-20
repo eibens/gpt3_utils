@@ -1,9 +1,7 @@
-import { Engine } from "./engine.ts";
-
 export type QueryData =
   & {
     prompt: string | string[];
-    engine: Engine;
+    engine: string;
     max_tokens: number;
   }
   & Partial<{
