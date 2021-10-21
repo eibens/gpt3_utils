@@ -23,10 +23,10 @@ https://raw.githubusercontent.com/eibens/gpt3_utils/main/example.ts \
 rainbow
 ```
 
-**Warning: Running the example will
-use some of your API resources.** See [example.ts](example.ts) and
-[gpt3.ts](gpt3.ts) for details on the TypeScript API. Import [gpt3_utils] from
-GitHub, where `ref` is a Git ref name such as `main` or a version tag:
+**Warning: Running the example will use some of your API resources.** See
+[example.ts](example.ts) and [gpt3.ts](gpt3.ts) for details on the TypeScript
+API. Import [gpt3_utils] from GitHub, where `ref` is a Git ref name such as
+`main` or a version tag:
 
 ```ts
 import { gpt3 } from "https://raw.githubusercontent.com/eibens/{ref}/gpt3_utils/mod.ts";
