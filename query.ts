@@ -1,7 +1,19 @@
+// This list may become incomplete when OpenAI adds new models.
+export type Engine =
+  | "ada"
+  | "babbage"
+  | "curie"
+  | "curie-instruct-beta"
+  | "davinci"
+  | "davinci-instruct-beta"
+  | "davinci-codex"
+  | "cushman-codex"
+  | "content-filter-alpha";
+
 export type QueryData =
   & {
     prompt: string | string[];
-    engine: string;
+    engine: Engine | string;
     max_tokens: number;
   }
   & Partial<{
