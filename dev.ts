@@ -1,5 +1,7 @@
-import { build } from "https://deno.land/x/edcb@v0.7.1/cli.ts";
+import { cli } from "https://deno.land/x/edcb@v0.9.0-alpha.2/cli.ts";
 
-await build({
-  ignore: ".log",
+await cli({
+  check: {
+    ignore: ".log",
+  },
 });
