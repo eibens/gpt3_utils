@@ -6,7 +6,7 @@ import { query, QueryData } from "./query.ts";
 export type Gpt3Options = {
   data: QueryData;
   logPath?: string;
-  auth?: () => Promise<string>;
+  auth?: string;
   clock?: () => number;
   lstat?: typeof Deno.lstat;
   mkdir?: typeof Deno.mkdir;
@@ -34,16 +34,14 @@ export function gpt3(options: Gpt3Options) {
         mkdir: options.mkdir || Deno.mkdir,
         writeTextFile: options.writeTextFile || Deno.writeTextFile,
       }),
-    query: (data) =>
+    query: async (data) =>
       query({
         data,
         fetch: options.fetch || globalThis.fetch,
-        auth: options.auth || (() => {
-          return authEnv({
-            key: "GPT3_API_KEY",
-            env: (key) => Promise.resolve(Deno.env.get(key)),
-          });
-        }),
+        auth: options.auth || (await authEnv({
+          env: (key) => Promise.resolve(Deno.env.get(key)),
+          key: "GPT3_API_KEY",
+        })),
       }),
   });
 }

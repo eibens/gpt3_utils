@@ -5,7 +5,9 @@ export type AuthEnvOptions = {
 
 export async function authEnv(options: AuthEnvOptions): Promise<string> {
   const apiKey = await options.env(options.key);
-  if (!apiKey) throw new Error(`environment variable is empty`);
+  if (!apiKey) {
+    throw new Error(`environment variable '${options.key}' is empty`);
+  }
   return apiKey;
 }
 

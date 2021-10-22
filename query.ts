@@ -32,7 +32,7 @@ export type QueryData =
 
 export type QueryOptions = {
   fetch: typeof fetch;
-  auth: () => Promise<string>;
+  auth: string;
   data: QueryData;
 };
 
@@ -53,7 +53,7 @@ export async function query(options: QueryOptions): Promise<QueryResult> {
   const { engine, ...params } = options.data;
   const url = `https://api.openai.com/v1/engines/${engine}/completions`;
   const body = JSON.stringify(params);
-  const apiKey = await options.auth();
+  const apiKey = options.auth;
   const response = await options.fetch(url, {
     body,
     method: "POST",
