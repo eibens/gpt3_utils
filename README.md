@@ -10,12 +10,12 @@ coverage][coverage-shield]][coverage]
 
 # Getting Started
 
-Set an environment variable called `GPT3_API_KEY` with your API key. Then run
+Set an environment variable called `OPENAI_API_KEY` with your API key. Then run
 the example:
 
 ```sh
 deno run \
---allow-env=GPT3_API_KEY \
+--allow-env=OPENAI_API_KEY \
 --allow-net=api.openai.com \
 --allow-read=. \
 --allow-write=. \
@@ -24,12 +24,12 @@ rainbow
 ```
 
 **Warning: Running the example will use some of your API resources.** See
-[example.ts](example.ts) and [gpt3.ts](gpt3.ts) for details on the TypeScript
-API. Import [gpt3_utils] from GitHub, where `ref` is a Git ref name such as
-`main` or a version tag:
+[example.ts](example.ts) and [completions.ts](completions.ts) for details on the
+TypeScript API. Import [gpt3_utils] from GitHub, where `ref` is a Git ref name
+such as `main` or a version tag:
 
 ```ts
-import { gpt3 } from "https://raw.githubusercontent.com/eibens/{ref}/gpt3_utils/mod.ts";
+import * as openai from "https://raw.githubusercontent.com/eibens/gpt3_utils/{ref}/mod.ts";
 ```
 
 # Note on [tokenize.ts](tokenize.ts)
