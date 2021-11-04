@@ -30,6 +30,13 @@ export type CompletionParams =
     logitBias: Map<string, number>;
   }>;
 
+export type CompletionChoice = {
+  text: string;
+  index: number;
+  logprobs: unknown;
+  finishReason: string;
+};
+
 export type CompletionOptions = {
   fetch?: typeof fetch;
   apiKey?: string;
@@ -42,12 +49,7 @@ export type CompletionResult = {
   object: string;
   created: number;
   model: string;
-  choices: {
-    text: string;
-    index: number;
-    logprobs: unknown;
-    finishReason: string;
-  }[];
+  choices: CompletionChoice[];
 };
 
 export async function create(
