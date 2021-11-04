@@ -21,8 +21,8 @@ async function findColor(thing: string): Promise<string> {
     params: {
       prompt: makePrompt(thing),
       maxTokens: 5,
-      engine: "davinci",
-      temperature: 0.05,
+      engine: "curie",
+      temperature: 0,
       stop: "\n",
     },
   });
