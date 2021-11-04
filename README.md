@@ -17,9 +17,7 @@ the example:
 deno run \
 --allow-env=OPENAI_API_KEY \
 --allow-net=api.openai.com \
---allow-read=. \
---allow-write=. \
-https://raw.githubusercontent.com/eibens/gpt3_utils/main/example.ts \
+https://raw.githubusercontent.com/eibens/gpt3_utils/v1.0.0-alpha.3/example.ts \
 rainbow
 ```
 
