@@ -1,0 +1,37 @@
+{
+  "consoleLog": {
+      "prefix": "cl",
+      "body": [
+          "console.log($1)"
+      ],
+      "description": "Console.log"
+  },
+  "commentHeaderExternals": {
+      "prefix": "*E",
+      "body": [
+          "/** EXTERNALS **/$1"
+      ],
+      "description": "Comment Header: Externals"
+  },
+  "commentHeaderLocals": {
+      "prefix": "*L",
+      "body": [
+          "/** LOCALS **/$1"
+      ],
+      "description": "Comment Header: Locals"
+  },
+  "commentHeaderHelpers": {
+      "prefix": "*H",
+      "body": [
+          "/** HELPERS **/$1"
+      ],
+      "description": "Comment Header: Helpers"
+  },
+  "commentHeaderMain": {
+      "prefix": "*M",
+      "body": [
+          "/** MAIN **/$1"
+      ],
+      "description": "Comment Header: Main"
+  }
+}

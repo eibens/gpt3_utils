@@ -1,0 +1,10 @@
+{
+  "tasks": {
+    "fmt": "deno fmt --config=deno.json",
+    "lint": "deno lint --config=deno.json",
+    "test": "deno test --config=deno.json",
+    "verify": "deno task lint && deno task test",
+    "ci": "deno fmt --config=deno.json --check && deno task verify",
+    "fix": "deno task fmt && deno task verify"
+  }
+}
