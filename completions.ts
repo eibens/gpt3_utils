@@ -111,7 +111,7 @@ export async function create(
       text: choice.text,
       index: choice.index,
       logprobs: choice.logprobs,
-      finishReason: choice.finishReason,
+      finishReason: choice.finish_reason,
     })),
   };
 }
